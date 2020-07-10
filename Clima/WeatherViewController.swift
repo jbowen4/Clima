@@ -14,8 +14,8 @@ import SwiftyJSON
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
     //Constants
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "a2c06cb8e19da2522bd2bb6ef8ab77a1"
+    let weatherUrl = WEATHER_URL
+    let appId = APP_ID
     
 
     //TODO: Declare instance variables here
@@ -117,9 +117,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
             
-            let params: [String: String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
+            let params: [String: String] = ["lat": latitude, "lon": longitude, "appid": appId]
             
-            getWeatherData(url: WEATHER_URL, parameters: params)
+            getWeatherData(url: weatherUrl, parameters: params)
         }
     }
     
@@ -139,8 +139,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     //Write the userEnteredANewCityName Delegate method here:
     func userEnteredANewCityName(city: String) {
-        let params : [String : String] = ["q" : city, "appid" : APP_ID]
-        getWeatherData(url: WEATHER_URL, parameters: params)
+        let params : [String : String] = ["q" : city, "appid" : appId]
+        getWeatherData(url: weatherUrl, parameters: params)
     }
 
     
